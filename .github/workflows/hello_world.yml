@@ -1,0 +1,10 @@
+name: echo_hello  # Workflow name
+
+on: push  # Trigger on push
+  
+jobs:
+  echo_hello:  # Job name
+    runs-on: ubuntu-latest  # Runner Selection
+    steps:
+      - name: hello world with echo  # step 1
+        run: echo Hello, world! github actions
