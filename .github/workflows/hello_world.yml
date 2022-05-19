@@ -6,17 +6,10 @@ jobs:
   echo_hello:  # Job name
     runs-on: ubuntu-latest  # Runner Selection
     steps:
-      - name: hello world with echo  # step 1
-        run: echo Hello, world! Github Actions
-        
-      - name: hello world with CLI  # step 2
-        run: python -c "print('Hello, world! Github Actions step 2')"
-        
-      - name: python version check
-        run: python --version
-        
-      - name: python version upgrade (3.9)
-        run: sudo apt install python3.9
+      - name: Setup Python Ver. to 3.9
+        uses: actions/setup-python@v3.1.2
+        with:
+          python-version: "3.9"
 
       - name: python version check
-        run: python3.9 --version
+        run: python --version
