@@ -7,4 +7,7 @@ jobs:
     runs-on: ubuntu-latest  # Runner Selection
     steps:
       - name: hello world with echo  # step 1
-        run: echo Hello, world! github actions
+        run: echo Hello, world! Github Actions
+        
+      - name: hello world with CLI  # step 2
+        run: python -c "print('Hello, world! Github Actions step 2')"
