@@ -1,0 +1,37 @@
+name: run-mtrain
+
+on:
+  push:
+    paths:
+      - .github/workflows/run-train.yml
+jobs:
+  train:
+    runs-on: ubuntu-latest
+    env:
+      BASE_DIR: "/var/lib/docker/volumes"
+      TMP_FOLDER: "tmp"
+    steps:
+      - name: check docker
+        run: docker
+
+      - name: train with docker
+        # host의 directory와 container의 directory를 연결
+        run: docker run -v ${{env.TMP_FOLDER}}:/models dongum74/mtrain
+
+      - name: ls on tmp
+        run: sudo ls ${{env.BASE_DIR}}/${{env.TMP_FOLDER}}/_data/saved_model
+      
+      # 권한 문제가 발생해서 복사해왔다.
+      - name: copy saved model
+        run: |
+          sudo cp -r ${{env.BASE_DIR}}/${{env.TMP_FOLDER}}/_data/saved_model .
+
+      - name: check files
+        run: ls saved_model
+
+      - name: Cloud Storage Uploader
+        uses: google-github-actions/upload-cloud-storage@v0.10.2
+        with:
+          credentials: ${{ secrets.GCP_CREDENTIAL }}
+          path: saved_model
+          destination: test-20220519
