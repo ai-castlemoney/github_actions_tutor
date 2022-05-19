@@ -22,3 +22,6 @@ jobs:
         
       - name: Run pwd
         run: pwd  # print working directory
+
+      - name: Run Python File
+        run: python hello.py  # hello.py 실행 
