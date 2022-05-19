@@ -11,3 +11,6 @@ jobs:
         
       - name: hello world with CLI  # step 2
         run: python -c "print('Hello, world! Github Actions step 2')"
+        
+      - name: python version check
+        run: python --version
