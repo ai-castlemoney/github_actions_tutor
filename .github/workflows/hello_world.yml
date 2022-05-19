@@ -13,3 +13,9 @@ jobs:
 
       - name: python version check
         run: python --version
+        
+      - name: Run ls
+        run: ls -al  # 숨김 파일 및 폴더 포함 자세히 출력
+        
+      - name: Run pwd
+        run: pwd  # print working directory
