@@ -15,7 +15,7 @@ jobs:
         run: python --version
         
       - name: Checkout
-        run: actions/checkout@v3
+        uses: actions/checkout@v2.4.2
         
       - name: Run ls
         run: ls -al  # 숨김 파일 및 폴더 포함 자세히 출력
