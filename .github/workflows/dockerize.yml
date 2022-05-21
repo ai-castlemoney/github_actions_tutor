@@ -4,7 +4,7 @@ on:
   push:
     paths:
       - mnist_train/**
-      - .github/workflows/dockerize.yml # yaml이 변경될 때도 workflow 실행되게
+      - .github/workflows/dockerize.yml # yaml이 변경될 때도 workflow 실행되게 한다.
 jobs:
   dockerize:
     runs-on: ubuntu-latest
