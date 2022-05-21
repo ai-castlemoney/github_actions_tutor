@@ -13,13 +13,13 @@ jobs:
         uses: docker/login-action@v2.0.0
         with:
           username: dongum74
-          password: ${{secrets.DOCKER_PASSWORD}} # secret 가져오기
+          password: ${{ secrets.DOCKER_PASSWORD }} # secret 가져오기
 
       - name: Checkout
         uses: actions/checkout@v2.4.2
 
       - name: Docker build
-        run: docker build -t dongum74/mtrain2
+        run: docker build -t dongum74/mtrain2 mnist_train
 
       - name: Docker push
         run: docker push dongum74/mtrain2
